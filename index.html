@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="styles/atom-one-dark.css">
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <!-- Blog Post -->
+            <div class="card mb-4" style="margin-top: 25px;">
+                <pre><code class="javascript">
+function harmlessRansomNote(noteText, magazineText) {
+  var noteArr = noteText.split(' ');
+  var magazineArr = magazineText.split(' ');
+  var magazineObj = {};
+
+  magazineArr.forEach(word => {
+    if (!magazineObj[word]) magazineObj[word] = 0;
+    magazineObj[word]++;
+  });
+
+  var noteIsPossible = true;
+  noteArr.forEach(word => {
+    if (magazineObj[word]) {
+      magazineObj[word]--;
+      if (magazineObj[word] < 0) noteIsPossible = false;
+    }
+    else noteIsPossible = false;
+  });
+
+  return noteIsPossible;
+}
+harmlessRansomNote('this is a secret note for you from a secret admirer', 'puerto rico is a place of great wonder and excitement it has many secret waterfall locatoins that i am an admirer of you must hike quite a distance to find the secret places as they are far from populated areas but it is worth the effort a tip i have for you is to go early in the morning when it is not so hot out also note that you must wear hiking boots this is one of the best places i have ever visited');
+                </code></pre>
+                <div class="card-body">
+                    <h4 class="card-title">Harmless Ransom Note</h4>
+                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>-->
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <pre><code class="javascript">
+function fizzBuzz(num) {
+  for (var i = 1; i <= num; i++) {
+    if (i % 15 === 0) console.log('FizzBuzz');
+    else if (i % 3 === 0) console.log('Fizz');
+    else if (i % 5 === 0) console.log('Buzz');
+    else console.log(i);
+  }
+}
+fizzBuzz();
+}
+                </code></pre>
+                <div class="card-body">
+                    <h4 class="card-title">Fizz Buzz</h4>
+                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>-->
+                </div>
+            </div>
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <pre><code class="javascript">
+function isPalindrome(string) {
+  string = string.toLowerCase();
+  var charactersArr = string.split('');
+  var validCharacters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+  var lettersArr = [];
+  charactersArr.forEach(char => {
+    if (validCharacters.indexOf(char) > -1) lettersArr.push(char);
+  });
+
+  return lettersArr.join('') === lettersArr.reverse().join('');
+}
+
+isPalindrome("Madam, I'm Adam");
+                </code></pre>
+                <div class="card-body">
+                    <h4 class="card-title">Is Palindrome</h4>
+                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>-->
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <pre><code class="javascript">
+function caesarCipher(str,num) {
+  num = num % 26;
+  var lowerCaseString = str.toLowerCase();
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  var newString = '';
+
+  for (var i = 0; i < lowerCaseString.length; i++) {
+    var currentLetter = lowerCaseString[i];
+    if (currentLetter === ' ') {
+      newString += currentLetter;
+      continue;
+    }
+    var currentIndex = alphabet.indexOf(currentLetter);
+    var newIndex = currentIndex + num;
+    if (newIndex > 25) newIndex = newIndex - 26;
+    if (newIndex < 0) newIndex = 26 + newIndex;
+    if (str[i] === str[i].toUpperCase()) {
+      newString += alphabet[newIndex].toUpperCase();
+    }
+    else newString += alphabet[newIndex];
+  };
+
+  return newString;
+}
+caesarCipher('Zoo Keeper', 2);
+                </code></pre>
+                <div class="card-body">
+                    <h4 class="card-title">Caesar Cipher</h4>
+                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>-->
+                </div>
+            </div>
+
+
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <pre><code class="javascript">
+function reverseWords(string) {
+  var wordsArr = string.split(' ');
+  var reversedWordsArr = [];
+
+  wordsArr.forEach(word => {
+    var reversedWord = '';
+    for (var i = word.length - 1; i >= 0; i--) {
+      reversedWord += word[i];
+    };
+    reversedWordsArr.push(reversedWord);
+  });
+
+  return reversedWordsArr.join(' ');
+}
+
+reverseWords('Coding JavaScript');
+                </code></pre>
+                <div class="card-body">
+                    <h4 class="card-title">Reverse Words</h4>
+                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>-->
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <pre><code class="javascript">
+function reverseArrayInPlace(arr) {
+  for (var i = 0; i < arr.length / 2; i++) {
+    var tempVar = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = tempVar;
+  }
+
+  return arr;
+}
+
+reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7, 8]);
+                </code></pre>
+                <div class="card-body">
+                    <h4 class="card-title">Reverse Array In Place</h4>
+                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>-->
+                </div>
+            </div>
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <pre><code class="javascript">
+function meanMedianMode(array) {
+  return {
+    mean: getMean(array),
+    median: getMedian(array),
+    mode: getMode(array)
+  }
+}
+
+function getMean(array) {
+  var sum = 0;
+
+  array.forEach(num => {
+    sum += num;
+  });
+
+  var mean = sum / array.length;
+  return mean;
+}
+
+function getMedian(array) {
+  array.sort(function(a, b){return a-b});
+  var median;
+
+  if (array.length % 2 !== 0) {
+    median = array[Math.floor(array.length / 2)];
+  }
+  else {
+    var mid1 = array[(array.length / 2) - 1];
+    var mid2 = array[array.length / 2];
+    median = (mid1 + mid2) / 2;
+  }
+
+  return median;
+}
+
+function getMode(array) {
+  var modeObj = {};
+
+  // create modeObj
+  array.forEach(num => {
+    if (!modeObj[num]) modeObj[num] = 0;
+    modeObj[num]++;
+  });
+
+  // create array of mode/s
+  var maxFrequency = 0;
+  var modes = [];
+  for (var num in modeObj) {
+    if (modeObj[num] > maxFrequency) {
+      modes = [num];
+      maxFrequency = modeObj[num];
+    }
+    else if (modeObj[num] === maxFrequency) modes.push(num);
+  }
+  // if every value appears same amount of times
+  if (modes.length === Object.keys(modeObj).length) modes = [];
+  return modes;
+}
+
+
+meanMedianMode([9,10,23,10,23,9]);
+                </code></pre>
+                <div class="card-body">
+                    <h4 class="card-title">Mean Median Mode</h4>
+                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>-->
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <pre><code class="javascript">
+function twoSum(numArray, sum) {
+  var pairs = [];
+  var hashTable = [];
+
+  for (var i = 0; i < numArray.length; i++) {
+    var currNum = numArray[i];
+    var counterpart = sum - currNum;
+    if (hashTable.indexOf(counterpart) !== -1) {
+      pairs.push([ currNum, counterpart ]);
+    }
+    hashTable.push(currNum);
+  }
+
+  return pairs;
+}
+
+twoSum([1, 6, 4, 5, 3, 3], 7);
+                </code></pre>
+                <div class="card-body">
+                    <h4 class="card-title">Two Sum</h4>
+                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>-->
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Algorithms</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">Harmless Ransom Note</a>
+                                </li>
+                                <li>
+                                    <a href="#">HTML</a>
+                                </li>
+                                <li>
+                                    <a href="#">Freebies</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">JavaScript</a>
+                                </li>
+                                <li>
+                                    <a href="#">CSS</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tutorials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
